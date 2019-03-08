@@ -38,12 +38,6 @@ int main()
             scanf("%d", &data);
             fflush(stdin);
             root = bst_insert(root, data);
-            printf("\n");
-            if (root == NULL) {
-                printf("(empty)\n");
-            } else {
-                bst_display(root, 0);
-            }
             break;
         case 2:
             printf("Number to remove > ");
@@ -51,15 +45,18 @@ int main()
             scanf("%d", &data);
             fflush(stdin);
             root = bst_remove(root, data);
+            break;
+        default:
+            break;
+        }
+
+        if (choice) {
             printf("\n");
             if (root == NULL) {
                 printf("(empty)\n");
             } else {
                 bst_display(root, 0);
             }
-            break;
-        default:
-            break;
         }
     } while (choice);
 
