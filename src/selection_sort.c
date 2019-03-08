@@ -33,6 +33,14 @@ int main()
     scanf("%d", &length);
     fflush(stdin);
 
+    if (length < 0) {
+        length = 0;
+    }
+
+    if (length > 128) {
+        length = 128;
+    }
+
     for (int i = 0; i < length; i++) {
         printf("Item %d > ", i + 1);
         fflush(stdout);
