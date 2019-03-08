@@ -89,7 +89,7 @@ void display()
         for (i = front; i < rear; i++) {
             printf("%d ", queue[i]);
         }
-        printf(" <- REAR");
+        printf("<- REAR");
     }
 
     printf("\n");
