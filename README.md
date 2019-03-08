@@ -12,6 +12,7 @@ algorithms and data structures in the C programming language.
 ### Queues
 
   * [Array-based queue](src/queue_array.c)
+  * [Circular queue](src/queue_circular.c)
 
 
 ### Trees
