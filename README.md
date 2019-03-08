@@ -3,29 +3,28 @@
 Simple, self-contained examples and implementations of some common
 algorithms and data structures in the C programming language.
 
+## Data Structures
 
 ### Stacks
 
-  * [Array-based stack](src/stack_array.c)
-
+* [Array-based stack](src/stack_array.c)
 
 ### Queues
 
-  * [Array-based queue](src/queue_array.c)
-  * [Circular queue](src/queue_circular.c)
-
+* [Array-based queue](src/queue_array.c)
+* [Circular queue](src/queue_circular.c)
 
 ### Trees
 
-  * [Binary Tree](src/binary_tree.c)
-
+* [Binary Tree](src/binary_tree.c)
 
 ### Binary Search Trees
 
-  * [Binary Search Tree](src/binary_search_tree.c)
+* [Binary Search Tree](src/binary_search_tree.c)
 
+## Algorithms
 
 ### Sorting
 
-  * [Insertion sort](src/insertion_sort.c)
-  * [Selection sort](src/selection_sort.c)
+* [Insertion sort](src/insertion_sort.c)
+* [Selection sort](src/selection_sort.c)
