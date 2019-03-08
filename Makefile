@@ -10,6 +10,7 @@ TARGETS=$(patsubst src/%.c,bin/%, $(SOURCES))
 all: $(TARGETS)
 
 bin/%: src/%.c
+	@mkdir -p bin
 	$(CC) $(CFLAGS) $< -o $@ $(LFLAGS)
 
 clean:
