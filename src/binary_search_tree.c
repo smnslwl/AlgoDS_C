@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct BSTNode {
+typedef struct node_struct {
     int data;
-    struct BSTNode *left;
-    struct BSTNode *right;
-};
+    struct node_struct *left;
+    struct node_struct *right;
+} Node;
 
-void bst_free(struct BSTNode *root);
-struct BSTNode *bst_minimum(struct BSTNode *root);
-struct BSTNode *bst_insert(struct BSTNode *root, int data);
-struct BSTNode *bst_remove(struct BSTNode *root, int data);
-void bst_inorder(struct BSTNode *root);
-void bst_display(struct BSTNode *root, int depth);
+void bst_free(Node *root);
+Node *bst_minimum(Node *root);
+Node *bst_insert(Node *root, int data);
+Node *bst_remove(Node *root, int data);
+void bst_inorder(Node *root);
+void bst_display(Node *root, int depth);
 
 int main()
 {
-    struct BSTNode *root = NULL;
+    Node *root = NULL;
     int choice;
     int data;
 
@@ -64,7 +64,7 @@ int main()
     return 0;
 }
 
-void bst_free(struct BSTNode *root)
+void bst_free(Node *root)
 {
     if (root) {
         bst_free(root->left);
@@ -73,7 +73,7 @@ void bst_free(struct BSTNode *root)
     }
 }
 
-struct BSTNode *bst_minimum(struct BSTNode *root)
+Node *bst_minimum(Node *root)
 {
     if (root->left) {
         return bst_minimum(root->left);
@@ -82,10 +82,10 @@ struct BSTNode *bst_minimum(struct BSTNode *root)
     }
 }
 
-struct BSTNode *bst_insert(struct BSTNode *root, int data)
+Node *bst_insert(Node *root, int data)
 {
     if (root == NULL) {
-        struct BSTNode *new_node = malloc(sizeof(struct BSTNode));
+        Node *new_node = malloc(sizeof(Node));
         new_node->data = data;
         new_node->left = NULL;
         new_node->right = NULL;
@@ -102,7 +102,7 @@ struct BSTNode *bst_insert(struct BSTNode *root, int data)
     }
 }
 
-struct BSTNode *bst_remove(struct BSTNode *root, int data)
+Node *bst_remove(Node *root, int data)
 {
     if (root == NULL) {
         printf("%d does not exist in the Binary Search Tree.\n", data);
@@ -113,9 +113,9 @@ struct BSTNode *bst_remove(struct BSTNode *root, int data)
         } else if (data > root->data) {
             root->right = bst_remove(root->right, data);
         } else {
-            struct BSTNode *prev_root = root;
+            Node *prev_root = root;
             if (root->left && root->right) {
-                struct BSTNode *new_root = bst_minimum(root->right);
+                Node *new_root = bst_minimum(root->right);
                 root->data = new_root->data;
                 root->right = bst_remove(root->right, new_root->data);
             } else {
@@ -133,7 +133,7 @@ struct BSTNode *bst_remove(struct BSTNode *root, int data)
     }
 }
 
-void bst_inorder(struct BSTNode *root)
+void bst_inorder(Node *root)
 {
     if (root) {
         bst_inorder(root->left);
@@ -142,7 +142,7 @@ void bst_inorder(struct BSTNode *root)
     }
 }
 
-void bst_display(struct BSTNode *root, int depth)
+void bst_display(Node *root, int depth)
 {
     if (root) {
         bst_display(root->left, depth + 1);

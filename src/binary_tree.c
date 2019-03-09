@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct BinaryTreeNode {
+typedef struct node_struct {
     const char *data;
-    struct BinaryTreeNode *left;
-    struct BinaryTreeNode *right;
-};
+    struct node_struct *left;
+    struct node_struct *right;
+} Node;
 
-struct BinaryTreeNode *binary_tree_create(const char *data);
-void binary_tree_free(struct BinaryTreeNode *root);
-void binary_tree_preorder(struct BinaryTreeNode *root);
-void binary_tree_inorder(struct BinaryTreeNode *root);
-void binary_tree_postorder(struct BinaryTreeNode *root);
-void binary_tree_display(struct BinaryTreeNode *root, int depth);
+Node *binary_tree_create(const char *data);
+void binary_tree_free(Node *root);
+void binary_tree_preorder(Node *root);
+void binary_tree_inorder(Node *root);
+void binary_tree_postorder(Node *root);
+void binary_tree_display(Node *root, int depth);
 
 int main()
 {
-    struct BinaryTreeNode *root = binary_tree_create("A");
+    Node *root = binary_tree_create("A");
     root->left = binary_tree_create("B");
     root->right = binary_tree_create("C");
     root->left->left = binary_tree_create("D");
@@ -45,16 +45,16 @@ int main()
     return 0;
 }
 
-struct BinaryTreeNode *binary_tree_create(const char *data)
+Node *binary_tree_create(const char *data)
 {
-    struct BinaryTreeNode *new_node = malloc(sizeof(struct BinaryTreeNode));
+    Node *new_node = malloc(sizeof(Node));
     new_node->data = data;
     new_node->left = NULL;
     new_node->right = NULL;
     return new_node;
 }
 
-void binary_tree_free(struct BinaryTreeNode *root)
+void binary_tree_free(Node *root)
 {
     if (root) {
         binary_tree_free(root->left);
@@ -63,7 +63,7 @@ void binary_tree_free(struct BinaryTreeNode *root)
     }
 }
 
-void binary_tree_preorder(struct BinaryTreeNode *root)
+void binary_tree_preorder(Node *root)
 {
     if (root) {
         printf("%s ", root->data);
@@ -72,7 +72,7 @@ void binary_tree_preorder(struct BinaryTreeNode *root)
     }
 }
 
-void binary_tree_inorder(struct BinaryTreeNode *root)
+void binary_tree_inorder(Node *root)
 {
     if (root) {
         binary_tree_inorder(root->left);
@@ -81,7 +81,7 @@ void binary_tree_inorder(struct BinaryTreeNode *root)
     }
 }
 
-void binary_tree_postorder(struct BinaryTreeNode *root)
+void binary_tree_postorder(Node *root)
 {
     if (root) {
         binary_tree_postorder(root->left);
@@ -90,7 +90,7 @@ void binary_tree_postorder(struct BinaryTreeNode *root)
     }
 }
 
-void binary_tree_display(struct BinaryTreeNode *root, int depth)
+void binary_tree_display(Node *root, int depth)
 {
     if (root) {
         binary_tree_display(root->left, depth + 1);
