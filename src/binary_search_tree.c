@@ -9,8 +9,8 @@ typedef struct node_struct {
 
 void destroy(Node *root);
 Node *minimum(Node *root);
-Node *insert(Node *root, int data);
-Node *remove(Node *root, int data);
+Node *insert_data(Node *root, int data);
+Node *remove_data(Node *root, int data);
 int size(Node *root);
 void display(Node *root, int depth);
 
@@ -33,18 +33,18 @@ int main()
         case 0:
             break;
         case 1:
-            printf("Number to insert > ");
+            printf("Number to insert_data > ");
             fflush(stdout);
             scanf("%d", &data);
             fflush(stdin);
-            root = insert(root, data);
+            root = insert_data(root, data);
             break;
         case 2:
-            printf("Number to remove > ");
+            printf("Number to remove_data > ");
             fflush(stdout);
             scanf("%d", &data);
             fflush(stdin);
-            root = remove(root, data);
+            root = remove_data(root, data);
             break;
         case 3:
             printf("Size = %d\n", size(root));
@@ -85,7 +85,7 @@ Node *minimum(Node *root)
     }
 }
 
-Node *insert(Node *root, int data)
+Node *insert_data(Node *root, int data)
 {
     if (root == NULL) {
         Node *new_node = malloc(sizeof(Node));
@@ -95,9 +95,9 @@ Node *insert(Node *root, int data)
         return new_node;
     } else {
         if (data < root->data) {
-            root->left = insert(root->left, data);
+            root->left = insert_data(root->left, data);
         } else if (data > root->data) {
-            root->right = insert(root->right, data);
+            root->right = insert_data(root->right, data);
         } else {
             printf("%d already exists in the Binary Search Tree.\n", data);
         }
@@ -105,22 +105,22 @@ Node *insert(Node *root, int data)
     }
 }
 
-Node *remove(Node *root, int data)
+Node *remove_data(Node *root, int data)
 {
     if (root == NULL) {
         printf("%d does not exist in the Binary Search Tree.\n", data);
         return NULL;
     } else {
         if (data < root->data) {
-            root->left = remove(root->left, data);
+            root->left = remove_data(root->left, data);
         } else if (data > root->data) {
-            root->right = remove(root->right, data);
+            root->right = remove_data(root->right, data);
         } else {
             Node *prev_root = root;
             if (root->left && root->right) {
                 Node *new_root = minimum(root->right);
                 root->data = new_root->data;
-                root->right = remove(root->right, new_root->data);
+                root->right = remove_data(root->right, new_root->data);
             } else {
                 if (root->left) {
                     root = root->left;
