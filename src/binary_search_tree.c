@@ -78,7 +78,7 @@ void bst_free(Node *root)
 
 Node *bst_minimum(Node *root)
 {
-    if (root->left) {
+    if (root != NULL && root->left != NULL) {
         return bst_minimum(root->left);
     } else {
         return root;
@@ -147,7 +147,7 @@ int bst_size(Node *root)
 
 void bst_display(Node *root, int depth)
 {
-    if (root) {
+    if (root != NULL) {
         bst_display(root->left, depth + 1);
         for (int i = 0; i < depth; i++) {
             printf("\t");
