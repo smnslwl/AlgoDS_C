@@ -11,6 +11,7 @@ void bst_free(Node *root);
 Node *bst_minimum(Node *root);
 Node *bst_insert(Node *root, int data);
 Node *bst_remove(Node *root, int data);
+int bst_size(Node *root);
 void bst_display(Node *root, int depth);
 
 int main()
@@ -22,7 +23,7 @@ int main()
     printf("Binary Search Tree\n");
 
     do {
-        printf("\n[1 INSERT] [2 REMOVE] [0 QUIT]\n");
+        printf("\n[1 INSERT] [2 REMOVE] [3 SIZE] [0 QUIT]\n");
         printf("Choice > ");
         fflush(stdout);
         scanf("%d", &choice);
@@ -44,6 +45,9 @@ int main()
             scanf("%d", &data);
             fflush(stdin);
             root = bst_remove(root, data);
+            break;
+        case 3:
+            printf("Size = %d\n", bst_size(root));
             break;
         default:
             break;
@@ -129,6 +133,15 @@ Node *bst_remove(Node *root, int data)
             }
         }
         return root;
+    }
+}
+
+int bst_size(Node *root)
+{
+    if (root == NULL) {
+        return 0;
+    } else {
+        return 1 + bst_size(root->left) + bst_size(root->right);
     }
 }
 
