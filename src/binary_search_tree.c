@@ -11,7 +11,6 @@ void bst_free(Node *root);
 Node *bst_minimum(Node *root);
 Node *bst_insert(Node *root, int data);
 Node *bst_remove(Node *root, int data);
-void bst_inorder(Node *root);
 void bst_display(Node *root, int depth);
 
 int main()
@@ -130,15 +129,6 @@ Node *bst_remove(Node *root, int data)
             }
         }
         return root;
-    }
-}
-
-void bst_inorder(Node *root)
-{
-    if (root) {
-        bst_inorder(root->left);
-        printf("%d ", root->data);
-        bst_inorder(root->right);
     }
 }
 
