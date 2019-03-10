@@ -7,7 +7,7 @@ typedef struct node_struct {
     struct node_struct *right;
 } Node;
 
-void bst_free(Node *root);
+void bst_destroy(Node *root);
 Node *bst_minimum(Node *root);
 Node *bst_insert(Node *root, int data);
 Node *bst_remove(Node *root, int data);
@@ -63,15 +63,15 @@ int main()
         }
     } while (choice);
 
-    bst_free(root);
+    bst_destroy(root);
     return 0;
 }
 
-void bst_free(Node *root)
+void bst_destroy(Node *root)
 {
     if (root) {
-        bst_free(root->left);
-        bst_free(root->right);
+        bst_destroy(root->left);
+        bst_destroy(root->right);
         free(root);
     }
 }
