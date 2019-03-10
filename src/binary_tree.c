@@ -8,7 +8,7 @@ typedef struct node_struct {
 } Node;
 
 Node *binary_tree_create(const char *data);
-void binary_tree_free(Node *root);
+void binary_tree_destroy(Node *root);
 void binary_tree_preorder(Node *root);
 void binary_tree_inorder(Node *root);
 void binary_tree_postorder(Node *root);
@@ -41,7 +41,7 @@ int main()
     binary_tree_postorder(root);
     printf("\n");
 
-    binary_tree_free(root);
+    binary_tree_destroy(root);
     return 0;
 }
 
@@ -54,11 +54,11 @@ Node *binary_tree_create(const char *data)
     return new_node;
 }
 
-void binary_tree_free(Node *root)
+void binary_tree_destroy(Node *root)
 {
     if (root) {
-        binary_tree_free(root->left);
-        binary_tree_free(root->right);
+        binary_tree_destroy(root->left);
+        binary_tree_destroy(root->right);
         free(root);
     }
 }
