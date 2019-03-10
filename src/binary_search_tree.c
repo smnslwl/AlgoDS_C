@@ -7,12 +7,12 @@ typedef struct node_struct {
     struct node_struct *right;
 } Node;
 
-void bst_destroy(Node *root);
-Node *bst_minimum(Node *root);
-Node *bst_insert(Node *root, int data);
-Node *bst_remove(Node *root, int data);
-int bst_size(Node *root);
-void bst_display(Node *root, int depth);
+void destroy(Node *root);
+Node *minimum(Node *root);
+Node *insert(Node *root, int data);
+Node *remove(Node *root, int data);
+int size(Node *root);
+void display(Node *root, int depth);
 
 int main()
 {
@@ -37,17 +37,17 @@ int main()
             fflush(stdout);
             scanf("%d", &data);
             fflush(stdin);
-            root = bst_insert(root, data);
+            root = insert(root, data);
             break;
         case 2:
             printf("Number to remove > ");
             fflush(stdout);
             scanf("%d", &data);
             fflush(stdin);
-            root = bst_remove(root, data);
+            root = remove(root, data);
             break;
         case 3:
-            printf("Size = %d\n", bst_size(root));
+            printf("Size = %d\n", size(root));
             break;
         default:
             break;
@@ -58,34 +58,34 @@ int main()
             if (root == NULL) {
                 printf("(empty)\n");
             } else {
-                bst_display(root, 0);
+                display(root, 0);
             }
         }
     } while (choice);
 
-    bst_destroy(root);
+    destroy(root);
     return 0;
 }
 
-void bst_destroy(Node *root)
+void destroy(Node *root)
 {
     if (root) {
-        bst_destroy(root->left);
-        bst_destroy(root->right);
+        destroy(root->left);
+        destroy(root->right);
         free(root);
     }
 }
 
-Node *bst_minimum(Node *root)
+Node *minimum(Node *root)
 {
     if (root != NULL && root->left != NULL) {
-        return bst_minimum(root->left);
+        return minimum(root->left);
     } else {
         return root;
     }
 }
 
-Node *bst_insert(Node *root, int data)
+Node *insert(Node *root, int data)
 {
     if (root == NULL) {
         Node *new_node = malloc(sizeof(Node));
@@ -95,9 +95,9 @@ Node *bst_insert(Node *root, int data)
         return new_node;
     } else {
         if (data < root->data) {
-            root->left = bst_insert(root->left, data);
+            root->left = insert(root->left, data);
         } else if (data > root->data) {
-            root->right = bst_insert(root->right, data);
+            root->right = insert(root->right, data);
         } else {
             printf("%d already exists in the Binary Search Tree.\n", data);
         }
@@ -105,22 +105,22 @@ Node *bst_insert(Node *root, int data)
     }
 }
 
-Node *bst_remove(Node *root, int data)
+Node *remove(Node *root, int data)
 {
     if (root == NULL) {
         printf("%d does not exist in the Binary Search Tree.\n", data);
         return NULL;
     } else {
         if (data < root->data) {
-            root->left = bst_remove(root->left, data);
+            root->left = remove(root->left, data);
         } else if (data > root->data) {
-            root->right = bst_remove(root->right, data);
+            root->right = remove(root->right, data);
         } else {
             Node *prev_root = root;
             if (root->left && root->right) {
-                Node *new_root = bst_minimum(root->right);
+                Node *new_root = minimum(root->right);
                 root->data = new_root->data;
-                root->right = bst_remove(root->right, new_root->data);
+                root->right = remove(root->right, new_root->data);
             } else {
                 if (root->left) {
                     root = root->left;
@@ -136,23 +136,23 @@ Node *bst_remove(Node *root, int data)
     }
 }
 
-int bst_size(Node *root)
+int size(Node *root)
 {
     if (root == NULL) {
         return 0;
     } else {
-        return 1 + bst_size(root->left) + bst_size(root->right);
+        return 1 + size(root->left) + size(root->right);
     }
 }
 
-void bst_display(Node *root, int depth)
+void display(Node *root, int depth)
 {
     if (root != NULL) {
-        bst_display(root->left, depth + 1);
+        display(root->left, depth + 1);
         for (int i = 0; i < depth; i++) {
             printf("\t");
         }
         printf("%d\n", root->data);
-        bst_display(root->right, depth + 1);
+        display(root->right, depth + 1);
     }
 }
