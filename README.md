@@ -8,6 +8,7 @@ algorithms and data structures in the C programming language.
 ### Stacks
 
 * [Array-based Stack](src/stack_array.c)
+* [Linked Stack](src/stack_linked.c)
 
 ### Queues
 
