@@ -7,12 +7,12 @@ algorithms and data structures in the C programming language.
 
 ### Stacks
 
-* [Array-based stack](src/stack_array.c)
+* [Array-based Stack](src/stack_array.c)
 
 ### Queues
 
-* [Array-based queue](src/queue_array.c)
-* [Circular queue](src/queue_circular.c)
+* [Array-based Queue](src/queue_array.c)
+* [Circular Queue](src/queue_circular.c)
 
 ### Linked Lists
 
