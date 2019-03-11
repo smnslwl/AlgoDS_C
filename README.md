@@ -32,3 +32,7 @@ algorithms and data structures in the C programming language.
 
 * [Insertion sort](src/insertion_sort.c)
 * [Selection sort](src/selection_sort.c)
+
+### Recursion
+
+* [Tower of Hanoi](src/tower_of_hanoi.c)
