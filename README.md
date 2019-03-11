@@ -14,6 +14,10 @@ algorithms and data structures in the C programming language.
 * [Array-based queue](src/queue_array.c)
 * [Circular queue](src/queue_circular.c)
 
+### Linked Lists
+
+* [Singly Linked List](src/singly_linked_list.c)
+
 ### Trees
 
 * [Binary Tree](src/binary_tree.c)
