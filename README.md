@@ -18,6 +18,7 @@ algorithms and data structures in the C programming language.
 ### Linked Lists
 
 * [Singly Linked List](src/singly_linked_list.c)
+* [Doubly Linked List](src/doubly_linked_list.c)
 
 ### Trees
 
