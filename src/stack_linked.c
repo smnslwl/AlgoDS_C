@@ -68,7 +68,7 @@ void push()
 void pop()
 {
     if (top == NULL) {
-        printf("List empty.\n");
+        printf("Stack empty.\n");
     } else {
         Node *temp = top;
         int data = temp->data;
